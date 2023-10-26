@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Settings | Productivity App</title>
+</head>
+<body id="settings-body">
+    <header>
+        <h1><a href="index.html">Productivity App</a></h1>
+        <h2>Settings</h2>
+        <nav></nav>
+    </header>
+
+    <main>
+        <aside>
+            <ul>
+                <li><a href="#personal-details">Personal Details</a></li>
+                <li><a href="#home-settings">Homepage</a></li>
+                <li><a href="#display-settings">Display</a></li>
+            </ul>
+        </aside>
+        <section class="content">
+            <button id="settings-save">Save</button>
+
+            <section id="personal-details">
+                <h3>Personal Details</h3>
+                <label for="name-input">Name</label>
+                <input type="text" id="name-input">
+<!--                <button type="button" id="save-name">Update</button>-->
+<!--                <button type="button" id="cancel-name">Cancel</button>-->
+
+                <span id="current-name"></span>
+                <button type="button" id="save-name">Update</button>
+                <button type="button" id="cancel-name">Cancel</button>
+<!--                <button type="button" id="change-name">Change</button>-->
+            </section>
+
+            <section id="home-settings">
+                <h3>Home Widgets</h3>
+                <p>Click a widget to change its settings</p>
+
+                <div id="widget-grid">
+                    <p id="change-top-left"></p>
+                    <p id="change-top-middle"></p>
+                    <p id="change-top-right"></p>
+                    <p id="change-bottom-left"></p>
+                    <p id="change-bottom-middle"></p>
+                    <p id="change-bottom-right"></p>
+                </div>
+
+                <div id="choose-widget">
+                    <input type="radio" name="widgets" id="clock" value="clock"><label for="clock">Clock</label>
+                    <input type="radio" name="widgets" id="note" value="note"><label for="note">Note</label>
+                    <input type="radio" name="widgets" id="timer" value="timer"><label for="timer">Timer</label>
+                    <input type="radio" name="widgets" id="calendar" value="calendar"><label for="calendar">Calendar</label>
+                    <input type="radio" name="widgets" id="no-widget" value="none" checked><label for="no-widget">None</label>
+                </div>
+
+                <div class="widget-options" id="clock-options">
+                    <fieldset>
+                        <legend>Hours</legend>
+                        <input type="radio" name="clock-hours" id="twelve" value="12"><label for="twelve">12-hour</label>
+                        <br>
+                        <input type="radio" name="clock-hours" id="twenty-four" value="24"><label for="twenty-four">24-hour</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Show Seconds</legend>
+                        <input type="radio" name="show-seconds" value="true" id="seconds-true"><label for="seconds-true">Show seconds</label>
+                        <br>
+                        <input type="radio" name="show-seconds" id="seconds-false" value="false"><label for="seconds-false">Don't show seconds</label>
+                    </fieldset>
+                </div>
+
+                <div class="widget-options" id="note-options">
+                    <label for="choose-note">Choose a note</label>
+                    <select name="choose-note" id="choose-note"></select>
+                </div>
+
+                <div class="widget-options" id="calendar-options">
+                    <input type="radio" name="calendar-type" id="month-grid">
+                    <label for="month-grid">Month Grid</label>
+                    <input type="radio" name="calendar-type" id="upcoming-events">
+                    <label for="upcoming-events">Upcoming Events</label>
+                </div>
+
+                <div>
+                    <button id="widget-save" type="button">Update Widget</button>
+                    <button id="widget-reset" type="button">Cancel</button>
+                </div>
+            </section>
+
+            <section id="display-settings">
+                <h3>Display</h3>
+
+                <section id="bg-settings">
+                    <h4>Background</h4>
+                    <fieldset>
+                        <legend>Background Type</legend>
+                        <label for="bg-solid"><input type="radio" name="bg" id="bg-solid" value="solid">Solid Colour</label>
+                        <label for="bg-gradient"><input type="radio" name="bg" id="bg-gradient" value="gradient">Gradient</label>
+<!--                        <input type="radio" name="bg" id="bg-image" value="solid"><label for="bg-image">Image</label>-->
+                    </fieldset>
+                    <fieldset id="bg-solid-options" class="bg-options">
+                        <legend>Background colour</legend>
+                        <input type="color" id="solid-colour">
+                        <label for="solid-colour" hidden>Background Colour</label>
+                    </fieldset>
+                    <fieldset id="bg-gradient-type" class="bg-options">
+                        <legend>Gradient Options</legend>
+                        <label for="bg-linear"><input type="radio" name="bg-gradient-type" id="bg-linear" value="linear">Linear</label>
+                        <label for="bg-radial"><input type="radio" name="bg-gradient-type" id="bg-radial" value="radial">Radial</label>
+                        <label for="angle">Angle<span></span></label>
+                        <input type="range" id="angle" max="360" value="180" list="range-snap-points">
+<!--                    The datalist below is based on the following Stack Overflow answer: https://stackoverflow.com/questions/28056834/make-html5-inputtype-range-with-many-steps-snap-to-the-middle
+                        I also used the Mozilla Developer Network guide: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#a_range_control_with_hash_marks -->
+                        <datalist id="range-snap-points">
+                            <option value="0">
+                            <option value="45">
+                            <option value="90">
+                            <option value="135">
+                            <option value="180">
+                            <option value="225">
+                            <option value="270">
+                            <option value="315">
+                            <option value="360">
+                        </datalist>
+                    </fieldset>
+                    <fieldset id="bg-gradient-colours" class="bg-options">
+                        <legend>Colours</legend>
+                        <div id="colours-grid"></div>
+                        <button id="add-colour-btn">Add Colour</button>
+                        <button id="reverse-colours">Reverse Colours</button>
+                    </fieldset>
+<!--                    <fieldset id="bg-image-options" class="bg-options">-->
+<!--                        <legend>Upload Background Image</legend>-->
+<!--                        <input type="file" accept="image/*">-->
+<!--                        <button id="upload-image">Set As Background</button>-->
+<!--                    </fieldset>-->
+                    <div id="show-gradient"></div>
+                    <div class="flex-break"></div>
+                    <button id="bg-save">Update Background</button>
+                    <button id="bg-reset">Reset</button>
+                </section>
+
+                <section id="colour-mode">
+                    <h4>Dark/Light Mode</h4>
+                    <input type="radio" name="mode" id="light-mode" value="light-mode" checked><label for="light-mode">Light Mode</label>
+                    <input type="radio" name="mode" id="dark-mode" value="dark-mode"><label for="dark-mode">Dark Mode</label>
+                    <br>
+                    <button id="colour-mode-save">Update</button>
+                </section>
+            </section>
+        </section>
+    </main>
+    <script type="text/javascript" src="scripts/nav.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <script type="text/javascript" src="scripts/settings-script.js"></script>
+</body>

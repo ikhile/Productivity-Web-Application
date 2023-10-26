@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Notebook | Productivity App</title>
+</head>
+<body id="notes-body">
+    <header>
+        <h1><a href="index.html">Productivity App</a></h1>
+        <h2>Notebook</h2>
+        <nav></nav>
+    </header>
+    <main>
+        <button id="new-note" type="button">New Note</button>
+            <aside id="notes-list"></aside>
+            <div id="show-note">
+                <button id="edit-btn" type="button">Edit</button>
+                <div id="note-content"></div>
+            </div>
+            <div id="edit-note">
+                <label for="create-new-note" hidden>New Note?</label><input type="text" id="create-new-note" value="false" hidden> <!-- Hidden input used to track whether a new note is being created or an existing note is being edited -->
+
+                <label for="title" hidden>Title</label><input type="text" id="title" placeholder="Title">
+                <label for="content" hidden>Title</label><textarea name="content" id="content" cols="30" rows="10" placeholder="Enter text here..."></textarea>
+                <label for="show-checkboxes">Show Checkboxes</label><input type="checkbox" id="show-checkboxes">
+                <button id="cancel" type="button">Cancel</button>
+                <button id="save" type="button">Save</button>
+            </div>
+    </main>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <script type="text/javascript" src="scripts/nav.js"></script>
+    <script type="text/javascript" src="scripts/notes-script.js"></script>
+</body>

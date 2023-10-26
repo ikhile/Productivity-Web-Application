@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Home | Productivity App</title>
+</head>
+<body id="index-body">
+    <header>
+        <nav class="hidden-nav">
+            <button class="symbol-button" id="nav-toggle">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="flex-break"></div>
+            <form action="settings.html">
+                <button class="symbol-button" type="submit" id="settings-link">
+                    <span class="material-symbols-outlined">settings</span>
+                </button>
+            </form>
+        </nav>
+    </header>
+    <main>
+        <h1 id="greeting"></h1>
+        <form id="set-name-form">
+            <label for="set-name">What is your name?</label>
+            <input type="text" id="set-name" autofocus>
+            <button type="submit">OK</button>
+        </form>
+    </main>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <script type="text/javascript" src="scripts/nav.js"></script>
+
+    <!-- WIDGET SCRIPTS -->
+    <script type="text/javascript" src="scripts/widget-clock.js"></script>
+    <script type="text/javascript" src="scripts/widget-timer.js"></script>
+    <script type="text/javascript" src="scripts/widget-notes.js"></script>
+    <script type="text/javascript" src="scripts/widget-calendar.js"></script>
+
+    <!-- INDEX SCRIPT - MUST BE LOADED LAST TO MAKE USE OF SCRIPT.JS AND WIDGET SCRIPTS -->
+    <script type="text/javascript" src="scripts/index-script.js"></script>
+</body>

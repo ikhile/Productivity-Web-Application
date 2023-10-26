@@ -1,0 +1,1031 @@
+/* GENERAL STYLES */
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Major+Mono+Display&family=Ms+Madi&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sofia&display=swap');
+
+/* Any variables not defined within this stylesheet have been declared in script.js */
+
+html {
+  min-height: 100vh;
+}
+
+*:not(a, button, input, select, select > option) {
+  color: var(--text-colour); /* Variable declared in script.js */
+}
+
+p, li, button, label {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.symbol-button, .symbol-button .material-symbols-outlined {
+  background: none;
+  border: none;
+  color: var(--bg-90);
+  filter: drop-shadow(0 0 3px var(--text-colour));
+  cursor: pointer;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding-left: 20px;
+}
+
+header:not(#index-body header) {
+  background-color: var(--bg-20);
+}
+
+h1, h2, h3, h4, h5, h6, legend {
+  text-align: center;
+  /*display: inline-block;*/
+  font-family: "Roboto Slab", serif;
+  font-weight: 500;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin: 1px;
+  align-self: center;
+}
+
+header h1 a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+header h2 {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  font-size: 2.5em;
+  font-weight: 400;
+}
+
+header h1, nav li a, #settings-body aside li a {
+  text-transform: capitalize;
+  font-family: "Playfair Display", serif;
+  font-variant: small-caps;
+  font-weight: 500;
+}
+
+nav {
+  display: flex;
+  align-items: stretch;
+  justify-content: end;
+}
+
+nav * {
+  transition: all 0.5s ease-in-out;
+}
+
+nav:only-child {
+  flex-grow: 1;
+}
+
+nav ul {
+  display: flex;
+  justify-content: end;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  list-style: none;
+  text-align: center;
+  height: 100%;
+}
+
+nav li:hover, .current {
+  background-color: var(--bg-70);
+}
+
+nav li a {
+  /* These settings centre the link and text horizontally */
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 40px;
+
+  color: var(--text-colour);
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  background-repeat: no-repeat;
+}
+
+main {
+  width: 60%;
+  box-sizing: border-box;
+  margin: auto;
+  padding-bottom: 25px;
+  height: 100vh;
+}
+
+#note-content li, .note li {
+  list-style: none;
+}
+
+#note-content p, .note p, #note-content li, .note li {
+  font-family: Roboto, sans-serif;
+  font-size: 1.3em;
+}
+
+#note-content li:before, .note li:before {
+  /* The following two lines were implemented using the following source: https://stackoverflow.com/questions/3203252/unicode-character-as-bullet-for-list-item-in-css */
+  content: '\2610';
+  margin-right: 5px;
+  /* End */
+  cursor: pointer;
+}
+
+li.checked {
+  text-decoration: line-through;
+}
+
+li.checked:before {
+  content: '\2713' !important;
+  margin-left: 2px;
+
+  /* The following two lines were implemented with advice from the following source: https://www.geeksforgeeks.org/how-to-remove-underline-from-abefore-using-css/#:~:text=To%20remove%20the%20underline%20from,text%2Ddecoration%20property%20to%20none. */
+  text-decoration: none !important;
+  display: inline-block;
+  /* End */
+}
+
+
+/* INDEX.HTML */
+
+#greeting, #set-name-form {
+  font-size: 5em;
+  grid-area: greeting;
+  font-family: Sofia, cursive;
+  font-weight: normal;
+}
+
+#greeting {
+  margin: 0 auto;
+}
+
+#set-name-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 30px;
+  margin: 0 70px 0 15px;
+  align-items: center;
+  z-index: 100; /* Ensures form is above hidden menu so can be clicked */
+}
+
+#set-name-form label {
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+#set-name {
+  background-color: var(--bg-20);
+  font-size: inherit;
+  font-family: inherit;
+  border: 3px solid var(--bg-70);
+  padding: 10px;
+  color: var(--text-colour);
+  caret-color: var(--text-colour);
+  /* The below two lines allow input to fill remaining space in form */
+  min-width: 100px;
+  flex-grow: 1;
+}
+
+#set-name-form button {
+  font-size: 0.75em;
+  border-radius: 15%;
+}
+
+#set-name:focus {
+  outline: none;
+}
+
+#go-to-settings {
+  position: absolute;
+  top: 35vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1100px;
+  font-size: 3.5em;
+  text-align: center;
+  font-style: italic;
+  font-weight: 300;
+}
+
+#go-to-settings span {
+  display: none;
+}
+
+#index-body nav {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  flex-wrap: wrap;
+  gap: 5px 0;
+}
+
+#index-body nav ul {
+  visibility: hidden;
+  opacity: 0;
+  gap: 8px;
+}
+
+#index-body nav li a {
+  background-color: var(--bg-20);
+  border-radius: 10px;
+}
+
+#nav-toggle, #nav-toggle span, #settings-link, #settings-link span {
+  height: auto;
+  padding: 0;
+  font-size: 2em;
+  color: var(--text-colour);
+  /*filter: drop-shadow(0 0 1px var(--text-colour));*/
+  filter: none;
+}
+
+.flex-break {
+  flex-basis: 100%;
+}
+
+#index-body main {
+  display: grid;
+  grid-template: auto 1fr 1fr / 1fr 1fr 1fr;
+  grid-template-areas: "greeting    greeting     greeting"
+                       "top-left    top-middle    top-right"
+                       "bottom-left bottom-middle bottom-right";
+  gap: 20px;
+  padding: 20px !important;
+  width: 100vw !important;
+}
+
+#top-left       { grid-area: top-left }
+#top-middle     { grid-area: top-middle }
+#top-right      { grid-area: top-right }
+#bottom-left    { grid-area: bottom-left }
+#bottom-middle  { grid-area: bottom-middle }
+#bottom-right   { grid-area: bottom-right }
+
+.widget/*:not(.none)*/ {
+  padding: 10px;
+  background-color: var(--bg-20);
+}
+
+.clock p, .timer-clock {
+  font-family: "Cutive Mono", monospace;
+  font-weight: 500;
+}
+
+/* CLOCK WIDGET */
+.clock {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock p {
+  font-size: 6.5em;
+}
+
+.am-pm {
+  font-variant: all-small-caps;
+}
+
+/* NOTE WIDGET */
+.note {
+  overflow-y: auto;
+}
+
+.note button {
+  float: right;
+  /*cursor: pointer;*/
+}
+
+.note p, .note li, .note h3 {
+  text-align: left;
+  margin: 10px 7px;
+}
+
+.note p:first-of-type, .note li:first-of-type {
+  margin-top: 5px;
+}
+
+.note-deleted {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0 10px
+}
+
+.note-deleted p {
+  width: 100%;
+  font-size: 1.5em;
+  font-style: italic;
+  text-align: center;
+
+}
+
+/* TIMER WIDGET */
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px
+}
+
+.timer-clock {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(5, auto);
+  justify-content: center;
+  align-items: center;
+  font-size: 5.5em;
+}
+
+.timer > button {
+  font-size: 1.5em;
+  padding: 3px 10px 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.time-section {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  justify-content: center;
+}
+
+.time-section * {
+  margin: auto;
+  text-align: center;
+}
+
+.timer-active button.change-time {
+  /*visibility: hidden;*/
+  display: none;
+}
+
+button.change-time {
+  font-size: 0.6em;
+  cursor: auto;
+}
+
+.timer-active .no-label {
+  visibility: hidden;
+}
+
+.timer-p {
+  font-size: 1.5em;
+  font-style: italic;
+  opacity: 0.75;
+}
+
+.timer-active p {
+  display: block;
+}
+
+.timer:not(.timer-active) p {
+  display: none;
+}
+
+.start-timer { display: block}
+.stop-timer  { display: none; }
+.timer-active .start-timer { display: none }
+.timer-active .stop-timer  { display: block }
+
+.timer-label {
+  display: flex;
+  justify-content: center;
+}
+
+.timer-label-display, .timer p {
+  margin: 0;
+}
+
+.timer-label-display {
+  cursor: pointer;
+}
+
+.timer-active .timer-label-display {
+  cursor: auto;
+}
+
+.timer-label-update {
+  display: none;
+ }
+
+.timer-label-update * {
+  font-size: 1.2em;
+
+}
+
+/* CALENDAR WIDGET */
+.calendar {
+  overflow: auto;
+}
+
+.calendar h2 {
+  float: right;
+  margin: 0 12px;
+  pointer-events: none;
+}
+
+.date-section a {
+  text-decoration: none;
+  display: block;
+}
+
+.date-section {
+  padding: 15px;
+  margin: 10px auto;
+}
+
+.date-section * {
+  text-align: left;
+}
+
+.date-section h3 {
+  margin-top: 0;
+}
+
+.date-section:first-of-type {
+  padding-top: 5px;
+}
+
+.date-section:last-of-type {
+  padding-bottom: 0;
+}
+
+.date-section:not(.date-section:last-of-type) {
+  border-bottom: 4px solid  rgba(255, 255, 255, 90%);
+}
+
+.calendar .timestamp {
+  font-style: italic;
+  margin-right: 5px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  /*font-variant: all-small-caps;*/
+}
+
+
+/* NOTES.HTML */
+
+#new-note {
+  width: 60%;
+  display: block;
+  margin: 10px auto;
+  padding: 5px 0
+}
+
+#notes-body main {
+  min-height: 100vh;
+  /*box-sizing: border-box;*/
+  display: grid;
+  grid-template: auto 1fr / 3fr 7fr;
+  grid-template-areas: "new new" "list note";
+  gap: 20px 30px;
+  margin: 0 auto;
+  width: 60%;
+}
+
+#notes-list {
+  grid-area: list;
+  /*overflow-x: hidden;*/
+}
+
+#notes-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#notes-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-end;
+  cursor: pointer;
+  margin: 0;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+  white-space: nowrap;
+}
+
+#notes-list li:nth-of-type(odd) {
+  background-color: var(--bg-20);
+}
+
+#notes-list li:hover, .current-note {
+  background-color: var(--bg-50) !important; /* important needed to overwrite odd/even rule */
+}
+
+#notes-list li:hover .timestamp{
+  display: none;
+}
+
+#notes-list li:hover .delete-note-btn {
+  display: inline-block;
+}
+
+.snippet {
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+#new-note {
+  grid-area: new;
+  margin: 0 auto 0;
+}
+
+#show-note, #edit-note {
+  grid-area: note;
+  padding: 15px;
+}
+
+#notes-list, #show-note, #edit-note {
+  background-color: var(--bg-20);
+}
+
+#edit-btn {
+  float: right;
+}
+
+#edit-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 10px 5px;
+}
+
+#edit-note textarea, #title {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#notes-body .timestamp {
+  float: right;
+  display: inline-block;
+  opacity: 0.8;
+  font-size: 0.8em;
+  margin-left: 5px /* Creates gap between text snippet and timestamp */
+}
+
+.delete-note-btn {
+  display: none;
+  float: right;
+}
+
+.blank-note {
+  font-style: italic;
+}
+
+#note-content p, #note-content li/*, #notes-list li*/ {
+  margin: 10px 0;
+}
+
+#note-content p:first-child, #note-content li:first-child, #notes-list li:first-child {
+  margin-top: 0;
+}
+
+.created-updated {
+  text-align: right;
+  font-style: italic;
+}
+
+#show-note h3 {
+  margin: 3px auto 13px;
+  text-align: left;
+}
+
+
+
+/* CALENDAR.HTML STYLES */
+
+#calendar-body main {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  gap: 0 25px;
+}
+
+#calendar-body aside div:first-of-type {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+
+#month-view > div, #day-view {
+  background-color: var(--bg-20);
+  width: auto
+}
+
+#calendar-body h3 {
+  margin: 0;
+  padding: 20px;
+}
+
+#calendar-grid {
+  width: 100%;
+  display: grid;
+  grid-template: auto repeat(6, 1fr) / repeat(7, 1fr);
+  gap: 10px;
+  padding: 0 20px 20px;
+}
+
+#calendar-grid > * {
+  margin: 0 auto;
+}
+
+#calendar-body .symbol-button {
+  font-size: 1.5em;
+}
+
+.day-btn {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  border: none;
+  border-radius: 15%;
+  background-color: var(--bg-90);
+  color: var(--text-colour);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 50%));
+}
+
+.day-btn.current, .day-btn:hover {
+  background-color: var(--text-colour);
+  color: var(--bg-90);
+}
+
+.day-btn:hover {
+  transform: scale(1.2);
+}
+
+.date-dot {
+  display: block;
+  visibility: hidden;
+}
+
+.has-events .date-dot {
+  visibility: visible;
+}
+
+#day-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: flex-start;
+}
+
+#day-view > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#day-view .timestamp {
+  width: auto;
+  font-style: italic;
+  text-transform: uppercase;
+  /*text-decoration: underline;*/
+  border-bottom: 2px solid white;
+}
+
+#event-grid {
+  display: grid;
+  align-items: start;
+  margin-top: 20px;
+  min-width: 50%;
+  max-width: 90%;
+}
+
+#event-grid p {
+  margin: 5px auto
+}
+
+#event-grid p:first-of-type {
+  margin-top: 0;
+}
+
+#event-grid p:last-of-type {
+  margin-bottom: 0;
+}
+
+#event-grid .event {
+  padding: 15px
+}
+
+#event-grid button {
+  float: right;
+  margin-left: 10px;
+}
+
+#event-grid >:nth-child(odd):not(.no-events) {
+  background-color: var(--bg-20);
+}
+
+#calendar-pop-up {
+  /*display: none;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*padding-top: 15vh;*/
+}
+
+#calendar-pop-up form {
+  display: grid;
+  grid-template: repeat(9, auto) / auto 1fr;
+  gap: 10px;
+  background-color: white;
+  margin-top: 18vh;
+  padding: 20px;
+  width: 25vw;
+}
+
+#calendar-pop-up form h3 {
+  margin: 0 auto;
+  padding: 0;
+  grid-area: 1 / 1 / span 1 / span 2;
+}
+
+#calendar-pop-up form div {
+  width: 100%;
+  grid-area: -2 / 1 / span 1 / span 2;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#calendar-pop-up .required, #calendar-pop-up div p {
+  color: red;
+}
+
+/* SETTINGS.HTML STYLES */
+
+#settings-body main {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 20px;
+}
+
+#settings-body main * {
+  transition: all 0.6s ease-in-out;
+}
+
+#save-name {
+  transition: all 0.25s ease-in-out;
+}
+
+#settings-body aside, .content {
+  overflow-y: auto;
+  background-color: var(--bg-20);
+}
+
+/* So sidebar can scroll the last section to top of screen: */
+/*.content section:last-of-type {
+    min-height: 94%;
+}*/
+
+#settings-body aside ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#settings-body aside li a {
+  display: block;
+  padding: 30px;
+  font-size: 1.5em;
+  color: inherit;
+  text-decoration: none;
+}
+
+#settings-body aside li:hover, #widget-grid p {
+  background-color: var(--bg-70);
+}
+
+#widget-grid p:hover {
+  opacity: 1 !important;
+}
+
+#settings-save {
+  position: fixed;
+  padding: 10px;
+  margin: 10px;
+  display: none;
+}
+
+#settings-body aside li a, .content > section:not(:last-of-type) {
+  border-bottom: 3px solid rgba(255, 255, 255, 80%);
+}
+
+.content > section {
+  padding: 20px 0;
+}
+
+#personal-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 10px;
+}
+
+#settings-body h3, #settings-body h4 {
+  width: 100%;
+}
+
+#current-name { /* Styled to look like a text input */
+  background-color: white;
+  border: 1px solid slategrey;
+  border-radius: 2px;
+  padding: 2px 5px 1px;
+  min-height: 15px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 0.8em;
+  color: black;
+}
+
+#settings-body p {
+  text-align: center;
+}
+
+#widget-grid {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  gap: 10px;
+  height: 300px;
+  padding: 0 30px;
+}
+
+#widget-grid p {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Playfair Display", serif;
+  font-size: 2.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* On page load, .active is added to each element, to be removed as necessary */
+#widget-grid p:not(.active) {
+  opacity: 0.6
+}
+
+#home-settings div:last-of-type {
+  margin: auto;
+  text-align: center;
+}
+
+#widget-save, #widget-reset {
+  display: inline-block;
+  margin: 0 2px;
+  width: 25%;
+  padding: 5px
+}
+
+#choose-widget, .widget-options {
+  margin: 20px auto
+}
+
+#choose-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px
+}
+
+#choose-widget input[type=radio] {
+  margin: -3px 0 0;
+}
+
+#choose-widget input[type=radio]:not(:first-of-type) {
+  margin-left: 20px;
+}
+
+#clock-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#clock-options input[type=radio] {
+  margin-right: 10px;
+}
+
+#note-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px
+}
+
+#note-options select {
+  width: 50%;
+  padding: 5px;
+}
+
+#display-settings > section {
+  margin: 35px auto
+}
+
+#settings-body input[type=color] {
+  height: 100%;
+  width: 100%;
+  min-height: 40px;
+}
+
+#bg-gradient-options p {
+  text-align: left;
+  margin: 0
+}
+
+#bg-settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  align-content: flex-start;
+}
+
+#bg-settings h4 {
+  margin: 0
+}
+
+#bg-settings fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 10px;
+
+}
+
+#bg-settings fieldset:first-of-type {
+  align-items: flex-start;
+}
+
+#bg-gradient-colours div:first-of-type {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-auto-rows: auto;
+  gap: 5px
+}
+
+#add-colour-btn, #reverse-colours {
+  width: 100%;
+}
+
+#bg-save, #bg-reset {
+  width: 25%;
+  margin: 0 4px;
+}
+
+#show-gradient {
+  background: black;
+  margin: 30px 10px 20px;
+  width: 150px
+}
+
+#colour-mode {
+  text-align: center;
+}
+
+#colour-mode-save {
+  margin: 10px auto;
+}
